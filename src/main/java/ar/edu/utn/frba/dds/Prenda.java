@@ -19,4 +19,16 @@ public class Prenda {
   public Categoria obtenerCategoria() {
     return this.tipo.getCategoria();
   }
+
+  public String getMaterial() {
+    return material;
+  }
+
+  public String getColorPrincipal() {
+    return colorPrincipal;
+  }
+
+  public String getColorSecundario() {
+    return colorSecundario;
+  }
 }
