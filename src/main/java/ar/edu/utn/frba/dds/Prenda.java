@@ -3,13 +3,15 @@ package ar.edu.utn.frba.dds;
 public class Prenda {
   private Tipo tipo;
   private String material;
+  private Trama trama;
   private String colorPrincipal;
   private String colorSecundario;
 
-  public Prenda(Tipo tipo, String material, String colorPrincipal) {
+  public Prenda(Tipo tipo, String material, String colorPrincipal, Trama trama) {
     this.tipo = tipo;
     this.material = material;
     this.colorPrincipal = colorPrincipal;
+    this.trama = trama;
   }
 
   public void setColorSecundario(String colorSecundario) {
@@ -30,5 +32,9 @@ public class Prenda {
 
   public String getColorSecundario() {
     return colorSecundario;
+  }
+
+  public Trama getTrama() {
+    return trama;
   }
 }
