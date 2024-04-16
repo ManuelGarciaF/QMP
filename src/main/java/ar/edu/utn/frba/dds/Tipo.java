@@ -5,31 +5,30 @@ import java.util.List;
 
 public class Tipo {
   private Categoria categoria;
-  private List<String> materialesValidos;
-  private List<Trama> tramasValidas;
-  private List<String> coloresValidos;
+  private List<Material> materialesValidos;
 
-  public Tipo(Categoria categoria, List<String> materialesValidos, List<Trama> tramasValidas,
-      List<String> coloresValidos) {
+  public Tipo(Categoria categoria, List<Material> materialesValidos) {
     this.categoria = categoria;
     this.materialesValidos = new ArrayList<>(materialesValidos);
-    this.tramasValidas = new ArrayList<>(tramasValidas);
-    this.coloresValidos = new ArrayList<>(coloresValidos);
   }
 
   public Categoria getCategoria() {
     return categoria;
   }
 
-  public Boolean materialEsValido(String material) {
+  public Boolean materialEsValido(Material material) {
     return materialesValidos.contains(material);
   }
 
-  public Boolean tramaEsValida(Trama trama) {
-    return tramasValidas.contains(trama);
-  }
+  public static final Tipo CHOMBA = new Tipo(
+      Categoria.PARTE_SUPERIOR,
+      List.of(Material.PIQUE, Material.ALGODON));
 
-  public Boolean colorEsValido(String color) {
-    return coloresValidos.contains(color);
-  }
+  public static final Tipo PANTALON = new Tipo(
+      Categoria.PARTE_INFERIOR,
+      List.of(Material.JEAN, Material.ACETATO));
+
+  public static final Tipo ZAPATILLAS = new Tipo(
+      Categoria.CALZADO,
+      List.of(Material.CUERO, Material.LONA));
 }

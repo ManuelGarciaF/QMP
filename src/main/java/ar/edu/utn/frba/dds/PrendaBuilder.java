@@ -4,49 +4,38 @@ import static java.util.Objects.requireNonNull;
 
 public class PrendaBuilder {
   private Tipo tipo;
-  private String material;
+  private Material material;
   private Trama trama = Trama.LISA; // Requerimiento 5
-  private String colorPrincipal;
-  private String colorSecundario;
+  private Color colorPrincipal;
+  private Color colorSecundario;
 
   public PrendaBuilder(Tipo tipo) {
     this.tipo = requireNonNull(tipo);
   }
 
-  public void conMaterial(String material) {
+  public PrendaBuilder conMaterial(Material material) {
     requireNonNull(material);
     if (!tipo.materialEsValido(material)) {
       throw new PrendaInvalidaException("Material inválido");
     }
 
     this.material = material;
+    return this;
   }
 
-  public void conTrama(Trama trama) {
-    requireNonNull(trama);
-    if (!tipo.tramaEsValida(trama)) {
-      throw new PrendaInvalidaException("Trama inválida");
-    }
-
-    this.trama = trama;
+  public PrendaBuilder conTrama(Trama trama) {
+    this.trama = requireNonNull(trama);
+    return this;
   }
 
-  public void conColorPrincipal(String colorPrincipal) {
-    requireNonNull(colorPrincipal);
-    if (!tipo.colorEsValido(colorPrincipal)) {
-      throw new PrendaInvalidaException("Color inválido");
-    }
-
-    this.colorPrincipal = colorPrincipal;
+  public PrendaBuilder conColorPrincipal(Color colorPrincipal) {
+    this.colorPrincipal = requireNonNull(colorPrincipal);
+    return this;
   }
 
-  public void conColorSecundario(String colorSecundario) {
-    requireNonNull(colorSecundario);
-    if (!tipo.colorEsValido(colorSecundario)) {
-      throw new PrendaInvalidaException("Color inválido");
-    }
-
-    this.colorSecundario = colorSecundario;
+  public PrendaBuilder conColorSecundario(Color colorSecundario) {
+    this.colorSecundario = requireNonNull(colorSecundario);
+    return this;
   }
 
   public Prenda construirPrenda() {
