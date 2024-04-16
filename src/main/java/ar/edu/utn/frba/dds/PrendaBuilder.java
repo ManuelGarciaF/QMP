@@ -1,5 +1,7 @@
 package ar.edu.utn.frba.dds;
 
+import static java.util.Objects.requireNonNull;
+
 public class PrendaBuilder {
   private Tipo tipo;
   private String material;
@@ -7,11 +9,12 @@ public class PrendaBuilder {
   private String colorPrincipal;
   private String colorSecundario;
 
-  public void conTipo(Tipo tipo) {
-    this.tipo = tipo;
+  public PrendaBuilder(Tipo tipo) {
+    this.tipo = requireNonNull(tipo);
   }
 
   public void conMaterial(String material) {
+    requireNonNull(material);
     if (!tipo.materialEsValido(material)) {
       throw new PrendaInvalidaException("Material inválido");
     }
@@ -20,6 +23,7 @@ public class PrendaBuilder {
   }
 
   public void conTrama(Trama trama) {
+    requireNonNull(trama);
     if (!tipo.tramaEsValida(trama)) {
       throw new PrendaInvalidaException("Trama inválida");
     }
@@ -28,6 +32,7 @@ public class PrendaBuilder {
   }
 
   public void conColorPrincipal(String colorPrincipal) {
+    requireNonNull(colorPrincipal);
     if (!tipo.colorEsValido(colorPrincipal)) {
       throw new PrendaInvalidaException("Color inválido");
     }
@@ -36,6 +41,7 @@ public class PrendaBuilder {
   }
 
   public void conColorSecundario(String colorSecundario) {
+    requireNonNull(colorSecundario);
     if (!tipo.colorEsValido(colorSecundario)) {
       throw new PrendaInvalidaException("Color inválido");
     }

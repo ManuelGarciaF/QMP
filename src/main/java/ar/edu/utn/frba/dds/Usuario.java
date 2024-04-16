@@ -9,22 +9,27 @@ public class Usuario {
 
   /* La prenda en construcción será guardada en el prendaBuilder,
    * sirve como borrador para el requerimiento 4. */
-  private PrendaBuilder prendaBuilder = new PrendaBuilder();
+  private PrendaBuilder prendaBuilder;
 
   public Usuario() {
     this.prendas = new ArrayList<>();
     this.atuendos = new ArrayList<>();
   }
 
-  public void agregarPrenda(Prenda prenda) {
-    this.prendas.add(prenda);
-  }
-
   public void agregarAtuendo(Atuendo atuendo) {
     this.atuendos.add(atuendo);
   }
 
+  public void comenzarConstruccionDePrenda(Tipo tipo) {
+    this.prendaBuilder = new PrendaBuilder(tipo);
+  }
+
   public PrendaBuilder getPrendaBuilder() {
     return prendaBuilder;
+  }
+
+  public void terminarConstruccionDePrenda() {
+    this.prendas.add(this.prendaBuilder.construirPrenda());
+    this.prendaBuilder = null;
   }
 }
