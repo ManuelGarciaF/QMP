@@ -1,4 +1,4 @@
-# Qué me pongo 1
+# Qué me pongo
 
 Esta es una plantilla de proyecto diseñada para: 
 
