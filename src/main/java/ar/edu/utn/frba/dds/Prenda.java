@@ -37,4 +37,8 @@ public class Prenda {
   public void setColorSecundario(Color colorSecundario) {
     this.colorSecundario = colorSecundario;
   }
+
+  public Boolean esDeCategoria(Categoria categoria) {
+    return this.tipo.getCategoria().equals(categoria);
+  }
 }
