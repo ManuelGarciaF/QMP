@@ -19,16 +19,4 @@ public class Tipo {
   public Boolean materialEsValido(Material material) {
     return materialesValidos.contains(material);
   }
-
-  public static final Tipo CHOMBA = new Tipo(
-      Categoria.PARTE_SUPERIOR,
-      List.of(Material.PIQUE, Material.ALGODON));
-
-  public static final Tipo PANTALON = new Tipo(
-      Categoria.PARTE_INFERIOR,
-      List.of(Material.JEAN, Material.ACETATO));
-
-  public static final Tipo ZAPATILLAS = new Tipo(
-      Categoria.CALZADO,
-      List.of(Material.CUERO, Material.LONA));
 }
