@@ -14,12 +14,7 @@ public class PrendaBuilder {
   }
 
   public PrendaBuilder conMaterial(Material material) {
-    requireNonNull(material);
-    if (!tipo.materialEsValido(material)) {
-      throw new PrendaInvalidaException("Material inválido");
-    }
-
-    this.material = material;
+    this.material = requireNonNull(material);
     return this;
   }
 
