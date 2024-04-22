@@ -10,7 +10,9 @@ public abstract class CreadorDeUniformes {
   }
 
   public abstract Prenda crearParteInferior();
+
   public abstract Prenda crearParteSuperior();
+
   public abstract Prenda crearCalzado();
 }
 

@@ -8,6 +8,7 @@ public class PrendaBuilder {
   private Trama trama = Trama.LISA; // Requerimiento 5
   private Color colorPrincipal;
   private Color colorSecundario;
+  private Formalidad formalidad;
 
   public PrendaBuilder(Tipo tipo) {
     this.tipo = requireNonNull(tipo);
@@ -33,17 +34,17 @@ public class PrendaBuilder {
     return this;
   }
 
+  public PrendaBuilder conFormalidad(Formalidad formalidad) {
+    this.formalidad = formalidad;
+    return this;
+  }
+
   public Prenda construirPrenda() {
-    if (tipo == null || material == null || colorPrincipal == null) {
+    if (tipo == null || material == null || colorPrincipal == null || formalidad == null) {
       throw new PrendaInvalidaException("Faltan datos obligatorios");
     }
 
-    Prenda prenda = new Prenda(tipo, material, colorPrincipal, trama);
-    if (colorSecundario != null) {
-      prenda.setColorSecundario(colorSecundario);
-    }
-
-    return prenda;
+    return new Prenda(tipo, material, colorPrincipal, colorSecundario, trama, formalidad);
   }
 
 }
