@@ -8,13 +8,16 @@ import java.util.List;
 public class Usuario {
   private List<Prenda> prendas;
   private List<Atuendo> atuendos;
+  private Integer edad;
 
-  private static GeneradorSugerencias generadorSugerencias = new GeneradorSugerencias();
+  private GeneradorSugerencias generadorSugerencias;
 
   /* La prenda en construcción será guardada en el prendaBuilder que sirve como borrador. */
   private PrendaBuilder prendaBuilder;
 
-  public Usuario() {
+  public Usuario(Integer edad, GeneradorSugerencias generadorSugerencias) {
+    this.edad = requireNonNull(edad);
+    this.generadorSugerencias = requireNonNull(generadorSugerencias);
     this.prendas = new ArrayList<>();
     this.atuendos = new ArrayList<>();
   }
@@ -33,7 +36,7 @@ public class Usuario {
   }
 
   // No se si necesito crear todas las combinaciones posibles, creo una por ahora.
-  public Atuendo generarSugerencia() {
-    return generadorSugerencias.generarSugerencia(this.prendas);
+  public List<Atuendo> generarSugerencias() {
+    return generadorSugerencias.generarSugerenciasCon(this.prendas, this.edad);
   }
 }
