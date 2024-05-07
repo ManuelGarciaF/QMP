@@ -4,6 +4,10 @@ import java.util.List;
 
 public class GeneradorSugerenciasPorEdad extends GeneradorSugerencias {
 
+  public GeneradorSugerenciasPorEdad(ProveedorClima proveedorClima) {
+    super(proveedorClima);
+  }
+
   @Override
   public List<Atuendo> generarSugerenciasCon(List<Prenda> prendas, Integer edad) {
     if (edad <= 55) {

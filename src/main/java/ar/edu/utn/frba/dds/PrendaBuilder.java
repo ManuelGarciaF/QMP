@@ -9,6 +9,7 @@ public class PrendaBuilder {
   private Color colorPrincipal;
   private Color colorSecundario;
   private Formalidad formalidad;
+  private Integer temperaturaMaxima;
 
   public PrendaBuilder(Tipo tipo) {
     this.tipo = requireNonNull(tipo);
@@ -35,16 +36,31 @@ public class PrendaBuilder {
   }
 
   public PrendaBuilder conFormalidad(Formalidad formalidad) {
-    this.formalidad = formalidad;
+    this.formalidad = requireNonNull(formalidad);
+    return this;
+  }
+
+  public PrendaBuilder conTemperaturaMaxima(Integer temperaturaMaxima) {
+    this.temperaturaMaxima = requireNonNull(temperaturaMaxima);
     return this;
   }
 
   public Prenda construirPrenda() {
-    if (tipo == null || material == null || colorPrincipal == null || formalidad == null) {
+    if (tipo == null
+        || material == null
+        || colorPrincipal == null
+        || formalidad == null
+        || temperaturaMaxima == null) {
       throw new PrendaInvalidaException("Faltan datos obligatorios");
     }
 
-    return new Prenda(tipo, material, colorPrincipal, colorSecundario, trama, formalidad);
+    return new Prenda(tipo,
+        material,
+        colorPrincipal,
+        colorSecundario,
+        trama,
+        formalidad,
+        temperaturaMaxima);
   }
 
 }
