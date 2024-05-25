@@ -1,10 +1,7 @@
 package ar.edu.utn.frba.dds;
 
-import static java.util.Objects.requireNonNull;
-
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class Guardarropas {
   private List<Prenda> prendas;
@@ -19,6 +16,10 @@ public class Guardarropas {
     this.propuestas.add(propuesta);
   }
 
+  public void removerPropuesta(PropuestaModificacion propuesta) {
+    this.propuestas.remove(propuesta);
+  }
+
   public List<PropuestaModificacion> getPropuestas() {
     return this.propuestas;
   }
@@ -29,6 +30,10 @@ public class Guardarropas {
 
   public void removerPrenda(Prenda prenda) {
     this.prendas.remove(prenda);
+  }
+
+  public List<Prenda> getPrendas() {
+    return prendas;
   }
 
 }

@@ -2,20 +2,24 @@ package ar.edu.utn.frba.dds;
 
 import static java.util.Objects.requireNonNull;
 
-public class QuitarPrenda implements PropuestaModificacion {
+public class QuitarPrenda extends PropuestaModificacion {
   private Prenda prenda;
 
   public QuitarPrenda(Prenda prenda) {
+    super();
     this.prenda = requireNonNull(prenda);
   }
 
   @Override
-  public void aceptar(Guardarropas guardarropas) {
+  public void aceptarEn(Guardarropas guardarropas) {
+    super.aceptarEn(guardarropas);
     guardarropas.removerPrenda(prenda);
   }
 
   @Override
-  public void deshacer(Guardarropas guardarropas) {
+  public void deshacerEn(Guardarropas guardarropas) {
+    super.rechazarEn(guardarropas);
     guardarropas.agregarPrenda(prenda);
   }
+
 }
