@@ -2,32 +2,31 @@ package ar.edu.utn.frba.dds;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.ArrayList;
+import ar.edu.utn.frba.dds.accionesAlerta.AccionAlertaMeteorologica;
 import java.util.List;
 
 public class Usuario {
-  private List<Atuendo> atuendos;
-  private Integer edad;
+  private final Integer edad;
   // Varios usuarios pueden tener referencias al mismo guardarropas,
   // compartiendolo.
-  private List<Guardarropas> guardarropas;
-
-  private GeneradorSugerencias generadorSugerencias;
-
+  private final List<Guardarropas> guardarropas;
+  private final GeneradorSugerencias generadorSugerencias;
   // La prenda en construcción se guarda en el prendaBuilder.
   private PrendaBuilder prendaBuilder;
+  private Atuendo sugerenciaDiaria;
+  private List<AccionAlertaMeteorologica> accionesAnteAlertas;
+  private String email;
 
   public Usuario(Integer edad,
-      List<Guardarropas> guardarropas,
-      GeneradorSugerencias generadorSugerencias) {
+                 List<Guardarropas> guardarropas,
+                 GeneradorSugerencias generadorSugerencias,
+                 List<AccionAlertaMeteorologica> accionesAnteAlertas,
+                 String email) {
     this.edad = requireNonNull(edad);
     this.guardarropas = requireNonNull(guardarropas);
     this.generadorSugerencias = requireNonNull(generadorSugerencias);
-    this.atuendos = new ArrayList<>();
-  }
-
-  public void agregarAtuendo(Atuendo atuendo) {
-    this.atuendos.add(atuendo);
+    this.accionesAnteAlertas = requireNonNull(accionesAnteAlertas);
+    this.email = requireNonNull(email);
   }
 
   public void comenzarConstruccionDePrenda(Tipo tipo) {
@@ -44,13 +43,6 @@ public class Usuario {
     return generadorSugerencias.generarSugerenciasCon(this.getPrendas(), this.edad);
   }
 
-  // Crear un guardarropas y compartirlo con otros usuarios.
-  public void crearGuardarropasCon(List<Usuario> otrosUsuarios) {
-    var guardarropas = new Guardarropas();
-    this.guardarropas.add(guardarropas);
-    otrosUsuarios.forEach(usuario -> usuario.agregarGuardarropas(guardarropas));
-  }
-
   public void agregarGuardarropas(Guardarropas guardarropas) {
     this.guardarropas.add(guardarropas);
   }
@@ -61,4 +53,22 @@ public class Usuario {
         .toList();
   }
 
+  private Atuendo getSugerenciaDiaria() {
+    return sugerenciaDiaria;
+  }
+
+  public void actualizarSugerenciaDiaria() {
+    this.sugerenciaDiaria = this.generarSugerencias().get(0);
+  }
+
+  public void avisarAlertasMeteorologicas(List<AlertaMeteorologica> alertas) {
+    // Ejecutar cada alerta por cada accion
+    alertas.forEach(alerta -> {
+      accionesAnteAlertas.forEach(accion -> accion.ejecutar(this, alerta));
+    });
+  }
+
+  public String getEmail() {
+    return this.email;
+  }
 }

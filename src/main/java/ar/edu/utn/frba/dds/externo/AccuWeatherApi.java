@@ -1,4 +1,4 @@
-package ar.edu.utn.frba.dds;
+package ar.edu.utn.frba.dds.externo;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -7,7 +7,7 @@ import java.util.Map;
 
 public final class AccuWeatherApi {
 
-  public final List<Map<String, Object>> getWeather(String ciudad) {
+  public List<Map<String, Object>> getWeather(String ciudad) {
     return Arrays.asList(new HashMap<String, Object>() {{
         put("DateTime", "2019-05-03T01:00:00-03:00");
         put("EpochDateTime", 1556856000);
@@ -25,5 +25,11 @@ public final class AccuWeatherApi {
         );
       }}
     );
+  }
+
+  public Map<String, List<String>> getAlerts(String city) {
+    return new HashMap<String, List<String>>() {{
+        put("CurrentAlerts", Arrays.asList("STORM", "HAIL"));
+      }};
   }
 }

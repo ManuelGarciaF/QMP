@@ -6,7 +6,7 @@ import com.google.common.collect.Lists;
 import java.util.List;
 
 public class GeneradorSugerencias {
-  private ProveedorClima proveedorClima;
+  private final ProveedorClima proveedorClima;
 
   public GeneradorSugerencias(ProveedorClima proveedorClima) {
     this.proveedorClima = requireNonNull(proveedorClima);
