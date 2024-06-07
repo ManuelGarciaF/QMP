@@ -1,7 +1,6 @@
 package ar.edu.utn.frba.dds;
 
 public abstract class PropuestaModificacion {
-
   private EstadoPropuesta estadoPropuesta;
 
   public PropuestaModificacion() {

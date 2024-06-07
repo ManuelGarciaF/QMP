@@ -54,11 +54,12 @@ public class PrendaBuilder {
       throw new PrendaInvalidaException("Faltan datos obligatorios");
     }
 
-    return new Prenda(tipo,
+    return new Prenda(
+        tipo,
         material,
+        trama,
         colorPrincipal,
         colorSecundario,
-        trama,
         formalidad,
         temperaturaMaxima);
   }

@@ -14,8 +14,9 @@ public class Usuario {
   // La prenda en construcción se guarda en el prendaBuilder.
   private PrendaBuilder prendaBuilder;
   private Atuendo sugerenciaDiaria;
-  private List<AccionAlertaMeteorologica> accionesAnteAlertas;
-  private String email;
+
+  private final List<AccionAlertaMeteorologica> accionesAnteAlertas;
+  private final String email;
 
   public Usuario(Integer edad,
                  List<Guardarropas> guardarropas,
@@ -61,11 +62,8 @@ public class Usuario {
     this.sugerenciaDiaria = this.generarSugerencias().get(0);
   }
 
-  public void avisarAlertasMeteorologicas(List<AlertaMeteorologica> alertas) {
-    // Ejecutar cada alerta por cada accion
-    alertas.forEach(alerta -> {
-      accionesAnteAlertas.forEach(accion -> accion.ejecutar(this, alerta));
-    });
+  public void avisarAlertaMeteorologica(AlertaMeteorologica alerta) {
+    accionesAnteAlertas.forEach(accion -> accion.ejecutar(this, alerta));
   }
 
   public String getEmail() {

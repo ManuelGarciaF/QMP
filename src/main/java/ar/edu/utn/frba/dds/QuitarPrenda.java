@@ -18,7 +18,7 @@ public class QuitarPrenda extends PropuestaModificacion {
 
   @Override
   public void deshacerEn(Guardarropas guardarropas) {
-    super.rechazarEn(guardarropas);
+    super.deshacerEn(guardarropas);
     guardarropas.agregarPrenda(prenda);
   }
 

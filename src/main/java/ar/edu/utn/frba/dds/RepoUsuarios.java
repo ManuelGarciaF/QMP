@@ -1,13 +1,10 @@
 package ar.edu.utn.frba.dds;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RepoUsuarios {
-  private List<Usuario> usuarios;
-
-  public RepoUsuarios(List<Usuario> usuarios) {
-    this.usuarios = usuarios;
-  }
+  private final List<Usuario> usuarios = new ArrayList<>();
 
   public List<Usuario> getUsuarios() {
     return usuarios;
@@ -21,8 +18,8 @@ public class RepoUsuarios {
     usuarios.forEach(Usuario::actualizarSugerenciaDiaria);
   }
 
-  public void avisarAlertasMeteorologicas(List<AlertaMeteorologica> alertas) {
-    usuarios.forEach(usuario -> usuario.avisarAlertasMeteorologicas(alertas));
+  public void avisarAlertaMeteorologica(AlertaMeteorologica alerta) {
+    usuarios.forEach(usuario -> usuario.avisarAlertaMeteorologica(alerta));
   }
 
 }
